@@ -1,36 +1,31 @@
-import { posting, signOutUser, observer } from '../firebase/firebase.js';
+import { observer, printPost } from '../firebase/firebase.js';
 
-// Aqui deberin ir los post;
-export const newPost = () => {
-  const containerNewPost = document.createElement('section');
-  containerNewPost.className = 'feed-container';
-  containerNewPost.innerHTML = `
-  <nav class='navbar' id='navbar'>
-  <a href="#/feed">INICIO</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
-  <a href="#/newPost">NUEVA PUBLICACIÓN</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
-  <a href="#/login" id="logout">CERRAR SESIÓN</a> <img class='icon' src="./imagenes/perfil.svg" />
-</nav>
-        <section class='newpost' >
-        <input type='text' class='gameTitle' placeholder="Nombre del juego"/>
-        <textarea minlength='10' maxlength='1000' rows='10' columns='55' class='gameDescription' placeholder="Escribe aquí tu post"></textarea>
-        <button id='publish'>PUBLICAR
-        </button>
-        </section>`;
+export const feedPost = (postedPost) => {
+  // const callback = (array) => {
+  // array.forEach((element) => {
+  const postContainer = document.querySelector('#post');
+  postContainer.innerHTML = '';
+  const templatePosted = (dataPost) => {
+    const templatePost = `
+      <article class='newpost' >
+      <h4 class='gameTitle'> ${dataPost.boardgame} </h4>
+      <div class='gameDescription'>${dataPost.description}</div>
+      <div id ='countLike'>
+      <button class='like'> 
+      <i class='italic'></i> ME GUSTA <span class="counterStat">...</span>
+      </button>
+      </div>
+      </article>`;
 
-  containerNewPost.querySelector('#publish').addEventListener('click', /* async */() => {
-    /* aqui deben suceder cosas */
-    const gameTitle = containerNewPost.querySelector('.gameTitle').value;
-    const description = containerNewPost.querySelector('.gameDescription').value;
-    posting(gameTitle, description);
-    window.location.hash = '#/feed';
-  });
+    postContainer.innerHTML += templatePost;
+    // });
+    // };
+    observer();
+    // dejar root vacio con el innerthtml Y luego concatenar += el nuevo container para el cambio.
+  };
+  postedPost.forEach(templatePosted);
+};
 
-  containerNewPost.querySelector('#logout').addEventListener('click', () => {
-    signOutUser();
-  });
-
-  observer();
-  return containerNewPost;
-
-// dejar root vacio con el innerthtml Y luego concatenar += el nuevo container para el cambio.
+export const feed = () => {
+  printPost(feedPost, 'posts');
 };
