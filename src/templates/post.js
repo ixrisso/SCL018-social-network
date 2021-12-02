@@ -1,4 +1,3 @@
-
 export const feedPost = (postedPost) => {
   const postContainer = document.querySelector('#post');
   postContainer.innerHTML = '';
@@ -17,3 +16,4 @@ export const feedPost = (postedPost) => {
     postContainer.innerHTML += templatePost;
   };
   postedPost.forEach(templatePosted);
+};
