@@ -18,6 +18,8 @@ import {
   query,
   onSnapshot,
   orderBy,
+  doc,
+  deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore.js';
 
 // Configuración firebase v7.20.0
@@ -34,10 +36,7 @@ const firebaseConfig = {
 
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
 const auth = getAuth(app);
-
-// Inicializar ingreso Google con redireccionamiento
 const provider = new GoogleAuthProvider();
 // signInWithRedirect(auth, provider);
 
@@ -45,7 +44,7 @@ const provider = new GoogleAuthProvider();
 export const createUser = (emailSignup, passwordSignup) => {
   createUserWithEmailAndPassword(auth, emailSignup, passwordSignup)
     .then((userCredential) => {
-      window.location.hash = '#/login',
+      window.location.hash = '#/login';
       // Signed in
       const user = userCredential.user;
       updateProfile(auth.currentUser, {
@@ -145,6 +144,7 @@ export const posting = async (gameTitle, description) => {
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
       username: auth.currentUser.displayName,
+      userId: auth.currentUser.uid,
       boardgame: gameTitle,
       description,
       datepost: Date(Date.now()),
@@ -162,8 +162,13 @@ export const printPost = (callback) => {
   onSnapshot(q, (querySnapshot) => {
     const postedPost = [];
     querySnapshot.forEach((doc) => {
+      // postedPost.id = doc.id;
       postedPost.push(doc.data());
     });
     callback(postedPost);
   });
+};
+
+export const deletePost = async (id) => {
+  await deleteDoc(doc(db, 'posts', id));
 };
