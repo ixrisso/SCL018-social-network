@@ -122,10 +122,15 @@ export const observer = () => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
+
+      if (window.location.hash !== '#/newPost') {
+        window.location.hash = '#/feed';
+      }
       // ...
-    } else {
-      alert('porfavor registrate');
-      window.location.hash = '#/register';
+    } else if (!user) {
+      if (window.location.hash !== '#/register') {
+        window.location.hash = '#/login';
+      }
       // User is signed out
       // ...
     }

@@ -1,24 +1,19 @@
-export const feedSpace = () => {
-  const containerFeedSpace = document.createElement('section');
-  containerFeedSpace.className = 'feed-container';
-  containerFeedSpace.innerHTML = `
-     <div id='theContainerest'>
-     <nav id='navbar'>
-       <a href="#/home">HOME</a> <img src="https://img.icons8.com/office/30/000000/home--v2.png"/>
-       <a href="#/junta">JUNTAS</a> <img src="./imagenes/juntas.svg" />
-       <a href="#/review">REVIEW</a> <img src="./imagenes/review.svg" />
-       <a href="#/intercambio y venta">INTERCAMBIO Y VENTA</a> <img src="./imagenes/intercambio.svg" />
-       <a href="#/general">GENERAL</a> <img src="./imagenes/general.svg" />
-       <a href="#/perfil">PERFIL</a> <img src="./imagenes/perfil.svg" />
-     </nav>
-     <input type = "search" placeholder="busca la categoria"/>
-     <footer>
-     "todos los derechos reservados por Mewple"
-     </footer>
-     </div>
-      `;
 
-  return containerFeedSpace;
+export const feedPost = (postedPost) => {
+  const postContainer = document.querySelector('#post');
+  postContainer.innerHTML = '';
+  const templatePosted = (dataPost) => {
+    const templatePost = `
+      <article class='newpost' >
+      <h4 class='gameTitle'> ${dataPost.boardgame} </h4>
+      <div class='gameDescription'>${dataPost.description}</div>
+      <div id ='countLike'>
+      <button class='like'> 
+      <i class='italic'></i> ME GUSTA <span class="counterStat">...</span>
+      </button>
+      </div>
+      </article>`;
 
-  // dejar root vacio con el innerthtml Y luego concatenar += el nuevo container para el cambio.
-};
+    postContainer.innerHTML += templatePost;
+  };
+  postedPost.forEach(templatePosted);
