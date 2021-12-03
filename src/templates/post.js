@@ -14,7 +14,8 @@ export const feedPost = (postedPost) => {
 
     if (dataPost.userId === auth.currentUser.uid) {
       templatePost += `
-      <button value="${dataPost.id}" class='edit'>Editar</button>
+      <h5 class='loading'>¡Esperando tu actualización!</h5>
+      <button value="${dataPost.id}" class='edit'>Editar/Actualizar</button>
       <button value="${dataPost.id}" class='delete'>Eliminar</button>
       </div>
       </div>
@@ -51,7 +52,8 @@ export const feedPost = (postedPost) => {
       preDescription.removeAttribute('readonly');
       const boardgame = preTitle.value;
       const description = preDescription.value;
-
+      const msjTemp = document.querySelector('.loading');
+      msjTemp.style.display = 'block';
       editPost(postId, boardgame, description);
     });
   });
