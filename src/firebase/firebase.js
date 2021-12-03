@@ -36,7 +36,7 @@ const firebaseConfig = {
 
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 // signInWithRedirect(auth, provider);
 
@@ -161,9 +161,8 @@ export const printPost = (callback) => {
   const q = query(collection(db, 'posts'), orderBy('datepost', 'desc'));
   onSnapshot(q, (querySnapshot) => {
     const postedPost = [];
-    querySnapshot.forEach((doc) => {
-      // postedPost.id = doc.id;
-      postedPost.push(doc.data());
+    querySnapshot.forEach((_doc) => {
+      postedPost.push({ ..._doc.data(), id: _doc.id });
     });
     callback(postedPost);
   });
