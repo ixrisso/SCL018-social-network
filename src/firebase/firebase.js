@@ -14,12 +14,14 @@ import {
 import {
   getFirestore,
   collection,
+  Timestamp,
   addDoc,
   query,
   onSnapshot,
   orderBy,
   doc,
   deleteDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore.js';
 
 // Configuración firebase v7.20.0
@@ -147,7 +149,7 @@ export const posting = async (gameTitle, description) => {
       userId: auth.currentUser.uid,
       boardgame: gameTitle,
       description,
-      datepost: Date(Date.now()),
+      datepost: Timestamp.fromDate(new Date()),
       likesnum: [], /* number */
 
     });
@@ -170,4 +172,12 @@ export const printPost = (callback) => {
 
 export const deletePost = async (id) => {
   await deleteDoc(doc(db, 'posts', id));
+};
+
+export const editPost = async (id, titleUp, descriptionUp) => {
+  const postRef = doc(db, 'posts', id);
+  await updateDoc(postRef, {
+    boardgame: titleUp,
+    description: descriptionUp,
+  });
 };
