@@ -11,7 +11,7 @@ export const feedSpace = () => {
        <a href="#/newPost">NUEVA PUBLICACIÓN</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
        <a href="#/logout" id="logout">CERRAR SESIÓN</a> <img class='icon' src="./imagenes/perfil.svg" />
     </nav>
-     <main class= 'main'>
+     <main class= 'posts-main'>
      <section id='post'></section>
      </main>
      <footer class='footer'>

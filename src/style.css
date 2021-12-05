@@ -2,6 +2,14 @@ html{
     height:100%;
 }
 
+body{
+    width: clamp(350px, 800px, 1500);
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .grid-template {
     display:grid;
     gap: 2em;
@@ -36,7 +44,6 @@ input{
     border-left: hidden;
     border-right: hidden;
     border-bottom: solid gray 3px;
-    /*border: hidden hidden solid gray 3px hidden;*/
 }
 
 #google{
@@ -64,29 +71,12 @@ footer {
     justify-self: baseline;
 }
 
-.navbar {
-    grid-area: navbar;
-}
 
-.main {
-    grid-area: main;
-}
-
-.search{
-    grid-area: search;
-}
-
-.footer{
-    grid-area: footer;
-}
 
 .feedContainer {
-    display:grid;
-    grid-template:
-    "navbar navbar" auto
-    "main search" auto
-    "footer footer" auto/
-    auto auto;
+
+    display: block;
+    overflow: auto;
 }
 
 #navbar {
@@ -109,16 +99,16 @@ footer {
 }
 
 .newpost {
-    max-width: auto;
-    display: grid;
+    background-color: blanchedalmond;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(100vw, 1fr));
-    border: solid gray 3px;
     border-radius: 8px;
-    padding: 30vw 5vh;
-    justify-items: center;
-    justify-content: center;
-    margin-bottom: 5vh;
+    padding: clamp(15px, 40px, 60px);
+    height: clamp(300px, 400px, 700px);
+    width: clamp(390px, 650px, 650px);
+    max-height: 700px;
+    margin-bottom: clamp(15px, 40px, 60px);
+    overflow: hidden;
+    min-height: 100px;
 
 }
 
@@ -175,41 +165,28 @@ footer {
     display: none;
 }
 
-
-/* @media (max-width: 900px) {
-    .grid-template{
-        display:grid;
-        grid-template-columns: repeat(8, 1fr);
-    }
-  
+#post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: clamp(20px, 50px, 200px);
 }
 
+
+
+
+
+
 @media (max-width: 480px) {
-    .grid-template {
-        display:grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        grid-auto-rows: 52px;
-
-        
+    #post {
+        margin: 15px;
     }
 
-    button {
-        background-color: #2cab78;
-        border-radius: 8px;
-        grid-template: 2/4fr;
-        align-content: center;
-        filter: drop-shadow(3px 3px 3px rgb(56, 56, 56));
-        min-width: 180px;
-        border:none;
-        
+    .newpost {
+        padding: 15px;
+        height: clamp(300px, 400px, 400px);
+        width: clamp(350px, 400px, 400px);
+        max-height: 500px;
+        margin-bottom: 15px; 
     }
-    
-
-    button:hover {
-        background-color: #58ab2c;
-        color: white;
-    }
-
- */
-
