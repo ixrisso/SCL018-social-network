@@ -5,13 +5,16 @@ export const feedSpace = () => {
   const containerFeedSpace = document.createElement('section');
   containerFeedSpace.className = 'feed-container';
   containerFeedSpace.innerHTML = `
-     <div id='feedContainer' class='feedContainer'>
-     <nav class='navbar' id='navbar'>
-       <a href="#/feed">INICIO</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
-       <a href="#/newPost">NUEVA PUBLICACIÓN</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
-       <a href="#/logout" id="logout">CERRAR SESIÓN</a> <img class='icon' src="./imagenes/perfil.svg" />
+  <div id='feedContainer' class='feedContainer'>
+    <nav class='navbar' id='navbar'>
+    <img class='icon' src='./imagenes/home.svg'/>
+       <a href="#/feed" class= 'url'>INICIO</a> 
+       <a href="#/newPost" class= 'url'>NUEVA PUBLICACIÓN</a> <img class='icon' src="./imagenes/review.svg"/>
+       <a href="#/logout" id='logout' class= 'url'>CERRAR SESIÓN</a>
+       <img class='icon' src="./imagenes/perfil.svg" />
     </nav>
-     <main class= 'main'>
+       
+     <main class= 'posts-main'>
      <section id='post'></section>
      </main>
      <footer class='footer'>

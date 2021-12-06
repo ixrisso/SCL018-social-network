@@ -7,6 +7,7 @@ export const templateSignUp = () => {
   // aqui tu codigo
   containerTemplateSignUp.innerHTML = `
     <main class= "grid-template" >
+    <img id="banner" src="imagenes/banner.png" alt="Mewple banner">
     <div id="signupemail">
     <input type="email" 
     name=""
