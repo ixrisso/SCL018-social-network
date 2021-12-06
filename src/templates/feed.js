@@ -7,9 +7,9 @@ export const feedSpace = () => {
   containerFeedSpace.innerHTML = `
      <div id='feedContainer' class='feedContainer'>
      <nav class='navbar' id='navbar'>
-       <a href="#/feed">INICIO</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
-       <a href="#/newPost">NUEVA PUBLICACIÓN</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
-       <a href="#/logout" id="logout">CERRAR SESIÓN</a> <img class='icon' src="./imagenes/perfil.svg" />
+       <a href="#/feed" class= 'url'>INICIO</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
+       <a href="#/newPost" class= 'url'>NUEVA PUBLICACIÓN</a> <img class='icon' src="https://img.icons8.com/office/50/000000/home--v2.png"/>
+       <a href="#/logout" id='logout' class= 'url'>CERRAR SESIÓN</a> <img class='icon' src="./imagenes/perfil.svg" />
     </nav>
      <main class= 'posts-main'>
      <section id='post'></section>
