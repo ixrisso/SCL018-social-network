@@ -1,8 +1,18 @@
 html{
     height:100%;
+    background-color: rgb(205, 205, 205);
+
+}
+
+body{
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-template {
+    background-color: rgb(243, 243, 243);
     display:grid;
     gap: 2em;
     justify-items: center;
@@ -10,7 +20,7 @@ html{
     "email email email email" 1 fr
     "password password password password" 1 fr
     "click click click click" 1 fr;
-    padding: 15vh 8vw;
+    padding: 70px;
 
 }
 
@@ -36,7 +46,6 @@ input{
     border-left: hidden;
     border-right: hidden;
     border-bottom: solid gray 3px;
-    /*border: hidden hidden solid gray 3px hidden;*/
 }
 
 #google{
@@ -53,10 +62,11 @@ button {
     min-width: 180px;
     min-height: 44px;
     border:none;  
+    margin: 3px;
 }
 
 button:hover {
-    background-color: #58ab2c;
+    background-color: #2b9095;
     color: white;
 }
 
@@ -64,61 +74,60 @@ footer {
     justify-self: baseline;
 }
 
-.navbar {
-    grid-area: navbar;
-}
 
-.main {
-    grid-area: main;
-}
-
-.search{
-    grid-area: search;
-}
-
-.footer{
-    grid-area: footer;
-}
 
 .feedContainer {
-    display:grid;
-    grid-template:
-    "navbar navbar" auto
-    "main search" auto
-    "footer footer" auto/
-    auto auto;
+    background-color: rgb(205, 205, 205);
+    display: block;
+    overflow: auto;
 }
 
 #navbar {
-    background-color: #a3b4ad;
+    background-color: #2b9095;
     display: flex;
-    flex-direction: row; 
-    align-content: space-between;    
+    justify-content: space-between;   
 }
 
+
 .icon{
-    display: flex;
-    align-content: space-between;
+    display: inline-block;
+    text-decoration: none;    
+}
+
+.url {
+    fill:rgb(221, 217, 217);
+    display: inline-block;
+    text-decoration: none;
+    
 }
 
 #navbar a{
     padding: 14px 16px;
     color: #f2f2f2;  
-    align-items: space-between; 
+    align-items: space-between;
+    font-family: Arial, Helvetica, sans-serif; 
+}
 
+#navbar a:hover{
+    background-color: #45d89d;  
+}
+
+#banner {
+    max-width: 750px;
+    margin:15px;
 }
 
 .newpost {
-    max-width: auto;
-    display: grid;
+    background-color: rgb(243, 243, 243);
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(100vw, 1fr));
-    border: solid gray 3px;
     border-radius: 8px;
-    padding: 30vw 5vh;
-    justify-items: center;
-    justify-content: center;
-    margin-bottom: 5vh;
+    padding: clamp(15px, 40px, 60px);
+    height: clamp(300px, 400px, 700px);
+    width: clamp(390px, 650px, 650px);
+    max-height: 700px;
+    margin-bottom: clamp(15px, 40px, 60px);
+    overflow: hidden;
+    min-height: 100px;
 
 }
 
@@ -126,32 +135,38 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 45px;
-    min-width: auto;
-    max-width: 90vw;
+    height: 50px;
+    width: 600px;
     border: 1px solid #194a40;
     box-shadow: inset 0px 0px 3px #194a40;
     font-size: 24px;
     color: #194a40;
     margin-bottom: 20px;
-    padding-left: 5vw;
-    padding-right: 4vw;
+    padding: 15px;
+    resize: none;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .gameDescription {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    max-width: 75vw;
-    padding:10px;
+    width: 600px;
+    padding:15px;
     height: auto;
     border: 1px solid #194a40;
     box-shadow: inset 0px 0px 3px #194a40;
     font-size: 20px;
     color: #194a40;
+    resize: none;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 15px;
 }
 
 #postContainer {
+    width: clamp(350px, 800px, 1500);
     max-width:90vw;
     padding: 5vw;
     /* margin-bottom: 10vh; */
@@ -175,41 +190,43 @@ footer {
     display: none;
 }
 
-
-/* @media (max-width: 900px) {
-    .grid-template{
-        display:grid;
-        grid-template-columns: repeat(8, 1fr);
-    }
-  
+#post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: clamp(20px, 50px, 200px);
 }
 
-@media (max-width: 480px) {
-    .grid-template {
-        display:grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        grid-auto-rows: 52px;
-
-        
+@media (max-width: 500px) {
+    main {
+        max-width: 415px;
+        margin: 0px;
     }
-
-    button {
-        background-color: #2cab78;
-        border-radius: 8px;
-        grid-template: 2/4fr;
-        align-content: center;
-        filter: drop-shadow(3px 3px 3px rgb(56, 56, 56));
-        min-width: 180px;
-        border:none;
-        
+    #post {
+        margin: 15px;
     }
     
-
-    button:hover {
-        background-color: #58ab2c;
-        color: white;
+    #banner {
+        width: 300px;
+        margin: 0px;
     }
 
- */
-
+    .newpost {
+        padding: 15px;
+        height: clamp(300px, 400px, 400px);
+        width: 350px;
+        max-height: 500px;
+        margin-bottom: 15px; 
+    }
+    .gameDescription {
+        width: 320px;
+        padding:4px;
+        font-size: 18px;
+    }
+    .gameTitle {
+        width: 320px;
+        padding:4px;
+        font-size: 18px;
+    }
+}
